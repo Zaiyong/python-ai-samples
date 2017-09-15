@@ -142,7 +142,7 @@ class UCTAgent(Agent):
         self.timePerMove = timePerMove
         self.player = player
         self.bestChildPolicy = bestChildPolicy.__class__
-        print self.bestChildPolicy #mozna rozwiazac bardziej pythonowo
+        print(self.bestChildPolicy) #mozna rozwiazac bardziej pythonowo
         self.bestChild = bestChildPolicy().bestChild if bestChildPolicy is not None else UCTAgent.UCBPolicy().bestChild
         self.options = {}
 
@@ -164,7 +164,7 @@ class UCTAgent(Agent):
 
         # pick the best action based on the calculated expected values
         L = [n.getExpectedValue() for n in root.children]
-        print "{0}".format(root.getExpanded())
+        print("{0}".format(root.getExpanded()))
         return root.children[L.index(max(L))].action
 
 
@@ -231,7 +231,7 @@ def testUCTExpand():
     uctAgent = UCTAgent(paratroopers.paratroopersGreedyHeuristicVector, 1)
     root = UCTAgent.UCTNode(testGame.gameState)
     uctAgent.expand(root)
-    print root.children[0].state, root.children[0].action
+    print(root.children[0].state, root.children[0].action)
 
 def testUCTTreePolicy():
     import paratroopers
@@ -240,7 +240,7 @@ def testUCTTreePolicy():
     root = UCTAgent.UCTNode(testGame.gameState)
     for i in xrange(20):
         n = uctAgent.treePolicy(root)
-        print n.state
+        print(n.state)
         reward = uctAgent.defaultPolicy(n)
         uctAgent.backup(root, reward)
 
@@ -248,7 +248,7 @@ def testUCTMethod():
     import paratroopers
     testGame = paratroopers.ParatroopersGame(2,[1,2,3,4])
     uctAgent = UCTAgent(paratroopers.paratroopersGreedyHeuristicVector, 1, 2)
-    print uctAgent.getAction(testGame.gameState)
+    print(uctAgent.getAction(testGame.gameState))
 
 
 def main():
@@ -256,12 +256,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
-
-
-
-
-
-
