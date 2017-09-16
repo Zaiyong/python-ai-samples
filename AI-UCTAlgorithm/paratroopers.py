@@ -64,7 +64,7 @@ class ParatroopersGameState(object):
 
     def _getPlayerCells(self,player):
         """ Returns list of occupied cells """
-        return [i for i in xrange(0,ParatroopersGameState.gameInstance.K**2) if self.playerMask[player] & (1<<i)]
+        return [i for i in range(0,ParatroopersGameState.gameInstance.K**2) if self.playerMask[player] & (1<<i)]
 
     def addToReward(self,player,reward):
         self.rewardPlayer[player]+=reward
@@ -76,7 +76,7 @@ class ParatroopersGameState(object):
         """
         # TODO: can be done in one-liner
         # raw_indexes = list(set(util.flatten([self._getFreeNeighbours(raw_index) for raw_index in self._getPlayerCells(self.currentPlayer)])))
-        return ['D'+str(i) for i in xrange(0,ParatroopersGameState.gameInstance.K**2) if self._checkOccupancy(i)==ParatroopersGame.FREECELL] #+ ['S' + str(i) for i in raw_indexes]
+        return ['D'+str(i) for i in range(0,ParatroopersGameState.gameInstance.K**2) if self._checkOccupancy(i)==ParatroopersGame.FREECELL] #+ ['S' + str(i) for i in raw_indexes]
 
     def isTerminal(self):
         return sum(self.rewardPlayer) == ParatroopersGameState.gameInstance.mapsum
@@ -111,9 +111,9 @@ class ParatroopersGameState(object):
         lines=[]
         horizLine = '-'*6*ParatroopersGameState.gameInstance.K
         lines.append(horizLine)
-        for row in xrange(ParatroopersGameState.gameInstance.K):
+        for row in range(ParatroopersGameState.gameInstance.K):
             rowStr='| '
-            for column in xrange(ParatroopersGameState.gameInstance.K):
+            for column in range(ParatroopersGameState.gameInstance.K):
                 rowStr+='{0:2d}'.format(self._checkOccupancy(self._getRawIndex(row,column)))+'  | '
             lines.append(rowStr)
             lines.append(horizLine)
@@ -145,19 +145,19 @@ class ParatroopersGame(object):
 
     def resetGame(self):
         self.gameState = ParatroopersGameState(self.K)
-        print self.gameState
+        print(self.gameState)
 
     def printBoard(self):
-		lines=[]
-		horizLine = '-'*6*self.K
-		lines.append(horizLine)
-		for row in range(self.K):
-			rowStr='| '
-			for column in range(self.K):
-				rowStr+='{0:2d}'.format(self.map[row*self.K+column])+'  | '
-			lines.append(rowStr)
-			lines.append(horizLine)
-		print '\n'.join(lines)
+        lines=[]
+        horizLine = '-'*6*self.K
+        lines.append(horizLine)
+        for row in range(self.K):
+            rowStr='| '
+            for column in range(self.K):
+                rowStr+='{0:2d}'.format(self.map[row*self.K+column])+'  | '
+            lines.append(rowStr)
+            lines.append(horizLine)
+        print('\n'.join(lines))
 
 
     def isOver(self):
@@ -191,7 +191,7 @@ class KeyboardParatroopersAgent(Agent):
         self.game = game
 
     def getAction(self, state):
-        print "Current board : \n"
+        print("Current board : \n")
         self.game.printBoard()
         return util.input_string()
 
@@ -219,7 +219,7 @@ class GameSimulator(object):
     def playGame(self):
         """ Executes the game """
         ### Agent initialization ###
-        for agent in xrange(len(self.agents)):
+        for agent in range(len(self.agents)):
             initAgentFunc = util.TimeoutFunction(self.agents[agent].initState, self.options["timeoutStartup"])
             try:
                 start_time = time.time()
@@ -228,7 +228,7 @@ class GameSimulator(object):
                 if elapsed_time > self.game.options["startupTime"] : raise util.TimeoutFunctionException()
                 self.agentTotalTime[agent] += elapsed_time
             except util.TimeoutFunctionException:
-                print 'Agent {agent} timed out on startup'.format(**locals())
+                print('Agent {agent} timed out on startup'.format(**locals()))
                 return
         ### Run game simulation ###
         moveCount = 0
@@ -242,19 +242,19 @@ class GameSimulator(object):
                 if elapsed_time > self.game.options["getActionTime"] : raise util.TimeoutFunctionException()
                 self.agentTotalTime[agent] += elapsed_time
             except util.TimeoutFunctionException:
-                print 'Agent {agent} timed out on getAction call'.format(**locals())
+                print('Agent {agent} timed out on getAction call'.format(**locals()))
                 return
 
-            if self.options.get("printActions",False) == True: print "Action taken : {action}".format(**locals())
+            if self.options.get("printActions",False) == True: print("Action taken : {action}".format(**locals()))
 
             self.game.gameState = self.game.gameState.result(action)
             moveCount += 1
             if self.options.get("printEachMove",False) == True:
-                print "After move {moveCount} by {self.current_agent}".format(**locals())
-                print "Rewards {lista}".format(lista = self.game.gameState.rewardPlayer[1:3])
-                print str(self.game.gameState)
+                print("After move {moveCount} by {self.current_agent}".format(**locals()))
+                print("Rewards {lista}".format(lista = self.game.gameState.rewardPlayer[1:3]))
+                print(str(self.game.gameState))
             self.current_agent = (self.current_agent + 1) % (len(self.agents))
-        if self.options.get("printSummary",False)==True:  print 'Total time taken : {self.agentTotalTime}'.format(**locals())
+        if self.options.get("printSummary",False)==True:  print('Total time taken : {self.agentTotalTime}'.format(**locals()))
         return self.game.gameState.rewardPlayer[1:3]
 
 def greedyHeuristic(state, player):
@@ -269,7 +269,7 @@ def paratroopersRandomSetHeuristicVector(state):
     """ Returns reward for player 1 and 2, after having filled the rest of the board randomly """
     state_cpy = copy.deepcopy(state)
     ParatroopersGameState._takeCell
-    for d in xrange(ParatroopersGameState.gameInstance.K**2):
+    for d in range(ParatroopersGameState.gameInstance.K**2):
         if(state_cpy._checkOccupancy(d) == ParatroopersGame.FREECELL):
             state_cpy._takeCell(d,random.choice([ParatroopersGame.PLAYER1,ParatroopersGame.PLAYER2]))
 
@@ -280,26 +280,26 @@ def paratroopersRandomSetHeuristicVector(state):
 
 
 def testMapRepresentation():
-    print "hello"
+    print("hello")
     testGame = ParatroopersGame(3,[1,2,3,4,5,6,7,8,9])
-    print testGame.gameState._getFreeNeighbours(1,1)
+    print(testGame.gameState._getFreeNeighbours(1,1))
     testGame.gameState.playerMask[1] |= (1<<(testGame.gameState._getRawIndex(1,0)))
-    print testGame.gameState._getFreeNeighbours(1,1)
+    print(testGame.gameState._getFreeNeighbours(1,1))
 
 def testMoves():
     testGame = ParatroopersGame(3,[1,2,3,4,5,6,7,8,9])
     gs = testGame.gameState
-    print str(gs.playerMask[1])
+    print(str(gs.playerMask[1]))
     gs_mod = gs.result('D3').result('D4').result('D5').result('D6').result('D0').result('D7')
-    print gs_mod.getLegalActions()
+    print(gs_mod.getLegalActions())
     gs_mod = gs_mod.result('S1')
-    print str(gs_mod)
-    print "Reward = "+str(gs_mod.rewardPlayer[1])
-    print locals()
+    print(str(gs_mod))
+    print("Reward = "+str(gs_mod.rewardPlayer[1]))
+    print(locals())
     gs_mod = gs_mod.result('D2')
     gs_mod = gs_mod.result('D8')
-    print str(gs_mod)
-    print gs_mod.getLegalActions()
+    print(str(gs_mod))
+    print(gs_mod.getLegalActions())
 
 def testGameSimRandom():
     """ Example of game simulation """
@@ -312,7 +312,7 @@ def testGameSimRandom():
 
 def randomBoard(K):
     """ Returns a random board """
-    return [random.randint(1,K**2) for i in xrange(K**2)]
+    return [random.randint(1,K**2) for i in range(K**2)]
 
 
 def testGameSimMe():
@@ -345,7 +345,7 @@ def rankTwoAgents(agent1, agent2, sim_count = 10):
     results = [0,0]
     wonGames = [0, 0]
     gameResults = []
-    for i in xrange(sim_count):
+    for i in range(sim_count):
         testGame.resetGame()
         result_sim = gameSimulator.playGame()
         results[0] += result_sim[i%2]
@@ -356,12 +356,12 @@ def rankTwoAgents(agent1, agent2, sim_count = 10):
             wonGames[1]+=1
         agent1,agent2 = agent2, agent1
         agent1.player, agent2.player = agent2.player, agent1.player
-        print result_sim
+        print(result_sim)
         gameResults+=result_sim
 
-    print wonGames
-    print results
-    print gameResults
+    print(wonGames)
+    print(results)
+    print(gameResults)
 
 def main():
     agent1 = UCT.UCTAgent(paratroopersGreedyHeuristicVector, ParatroopersGame.PLAYER1, 3, transpositions = True, cutLevel =0, cutFunction = paratroopersRandomSetHeuristicVector)
