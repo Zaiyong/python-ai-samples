@@ -247,7 +247,12 @@ def testUCTTreePolicy():
 def testUCTMethod():
     import paratroopers
     testGame = paratroopers.ParatroopersGame(2,[1,2,3,4])
+    print(testGame.options)
+    print(testGame.gameState)
+    print(testGame.map)
+    print(paratroopers.paratroopersGreedyHeuristicVector)
     uctAgent = UCTAgent(paratroopers.paratroopersGreedyHeuristicVector, 1, 2)
+    print(111)
     print(uctAgent.getAction(testGame.gameState))
 
 
