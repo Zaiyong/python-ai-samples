@@ -1,0 +1,5 @@
+welcome: Welcome to aida prima, wat can I do for you?
+
+time: current time is {{hours}} o'clock {{minutes}}.
+
+restaurants: aida prima has {{restaurants|join(",")}}
