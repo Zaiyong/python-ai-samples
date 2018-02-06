@@ -4,4 +4,4 @@ time: current time is {{hours}} o'clock {{minutes}}.
 
 restaurants: aida prima has {{restaurants|join(",")}}
 
-events: the events of {{the_day}} are {{events|join(",")}}
+excursion: the excursion of {{the_day}} are {{excursion|join(",")}}

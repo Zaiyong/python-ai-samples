@@ -26,11 +26,12 @@ def listRestaurants():
     restaurants_msg=render_template('restaurants', restaurants=restaurants)
     return statement(restaurants_msg)
 
-@ask.intent('EventsIntent')
-def getEvents(the_day):
-    events = json.load(open('events.json'))
-    events_msg=render_template('events', events=events[the_day],the_day=the_day)
-    return statement(events_msg)
+@ask.intent('ExcursionIntent',convert={'the_day': str})
+def getExcursion(the_day):
+    excursion = json.load(open('excursion.json'))
+    print(excursion)
+    excursion_msg=render_template('excursion', excursion=excursion[the_day],the_day=the_day)
+    return statement(excursion_msg)
 
 if __name__ == '__main__':
     app.run()

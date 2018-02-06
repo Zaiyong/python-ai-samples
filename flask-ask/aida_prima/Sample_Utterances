@@ -2,6 +2,6 @@ AskTimeIntent what is the time
 AskTimeIntent what time is it
 AllRestaurantsIntent list the restaurants
 AllRestaurantsIntent tell me the restaurants
-EventsIntent tell me the events of {the_day}
-EventsIntent tell me the events {the_day}
-EventsIntent tell me the events on {the_day}
+ExcursionIntent tell me the excursion of {the_day}
+ExcursionIntent tell me the excursion {the_day}
+ExcursionIntent tell me the excursion on {the_day}

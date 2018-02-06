@@ -7,7 +7,7 @@
       "intent": "AllRestaurantsIntent"
     },
     {
-      "intent": "EventsIntent",
+      "intent": "ExcursionIntent",
       "slots" :[{
 
             "name": "the_day",
