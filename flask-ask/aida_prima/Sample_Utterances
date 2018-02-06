@@ -1,2 +1,7 @@
 AskTimeIntent what is the time
+AskTimeIntent what time is it
+AllRestaurantsIntent list the restaurants
 AllRestaurantsIntent tell me the restaurants
+EventsIntent tell me the events of {the_day}
+EventsIntent tell me the events {the_day}
+EventsIntent tell me the events on {the_day}

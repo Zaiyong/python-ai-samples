@@ -5,6 +5,16 @@
     },
     {
       "intent": "AllRestaurantsIntent"
+    },
+    {
+      "intent": "EventsIntent",
+      "slots" :[{
+
+            "name": "the_day",
+
+            "type": "AMAZON.DATE"
+
+        }]
     }
   ]
 }

@@ -1,10 +1,8 @@
 import logging
-
 from flask import Flask, render_template
-
 from flask_ask import Ask, statement, question, session
+import time,json
 
-import time
 app = Flask(__name__)
 
 ask = Ask(app, "/")
@@ -27,6 +25,12 @@ def listRestaurants():
     restaurants=[line.strip() for line in open('restaurants.txt').readlines()]
     restaurants_msg=render_template('restaurants', restaurants=restaurants)
     return statement(restaurants_msg)
+
+@ask.intent('EventsIntent')
+def getEvents(the_day):
+    events = json.load(open('events.json'))
+    events_msg=render_template('events', events=events[the_day],the_day=the_day)
+    return statement(events_msg)
 
 if __name__ == '__main__':
     app.run()
