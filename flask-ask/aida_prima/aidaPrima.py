@@ -33,5 +33,17 @@ def getExcursion(the_day):
     excursion_msg=render_template('excursion', excursion=excursion[the_day],the_day=the_day)
     return statement(excursion_msg)
 
+@ask.intent('RestaurantOpenTimeIntent',convert={'restaurant': str})
+def getOpenTime(restaurant):
+    open_time = json.load(open('restaurant_open.json'))
+    print(open_time)
+    open_time_msg=render_template('open_time_restaurant',
+                                    restaurant=restaurant,
+                                    open=open_time[restaurant]['open'],
+                                    close=open_time[restaurant]['close'])
+    return statement(open_time_msg)
+
+
+
 if __name__ == '__main__':
     app.run()

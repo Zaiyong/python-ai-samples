@@ -1,7 +1,9 @@
 welcome: Welcome to aida prima, wat can I do for you?
 
-time: current time is {{hours}} o'clock {{minutes}}.
+time: current time is {{hours}} clock {{minutes}}.
 
-restaurants: aida prima has {{restaurants|join(",")}}
+restaurants: aida prima has {{restaurants|join(",")}}.
 
-excursion: the excursion of {{the_day}} are {{excursion|join(",")}}
+excursion: the excursion of {{the_day}} are {{excursion|join(",")}}.
+
+open_time_restaurant: the {{restaurant}} is opened from {{open}} clock to {{close}} clock.

@@ -1,0 +1,34 @@
+{
+  "restaurant rossini": {
+    "open":10,
+    "close":12
+  },
+"steakhouse": {
+  "open":9,
+  "close":15
+},
+"sushi bar": {
+  "open":8,
+  "close":16
+},
+"fuego restaurant": {
+  "open":11,
+  "close":18
+},
+"east restaurant": {
+  "open":12,
+  "close":22
+},
+"weite welt restaurant": {
+  "open":15,
+  "close":23
+},
+"bella donna restaurant": {
+  "open":20,
+  "close":24
+},
+"markt restaurant": {
+  "open":15,
+  "close":21
+}
+}

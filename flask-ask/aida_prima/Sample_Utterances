@@ -5,3 +5,5 @@ AllRestaurantsIntent tell me the restaurants
 ExcursionIntent tell me the excursion of {the_day}
 ExcursionIntent tell me the excursion {the_day}
 ExcursionIntent tell me the excursion on {the_day}
+RestaurantOpenTimeIntent what is the open time of {restaurant}
+RestaurantOpenTimeIntent when is {restaurant} open

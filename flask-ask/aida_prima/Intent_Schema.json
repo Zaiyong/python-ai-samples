@@ -15,6 +15,16 @@
             "type": "AMAZON.DATE"
 
         }]
+    },
+    {
+      "intent": "RestaurantOpenTimeIntent",
+      "slots" :[{
+
+            "name": "restaurant",
+
+            "type": "restaurant_name"
+
+        }]
     }
   ]
 }

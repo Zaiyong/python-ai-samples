@@ -1,10 +1,8 @@
-Restaurant Rossini
-Steakhouse
-Sushi Bar
-Ristorante Casa Nova
-Fuego Restaurant
-East Restaurant
-Weite Welt Restaurant
-Bella Donna Restaurant
-Tapas Bar
-Markt Restaurant
+restaurant rossini
+steakhouse
+sushi bar
+fuego restaurant
+east restaurant
+weite welt restaurant
+bella donna restaurant
+markt restaurant
